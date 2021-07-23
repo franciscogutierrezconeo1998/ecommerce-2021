@@ -8,8 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import imageLogoMain from '../assets/img/ventas-logo.png';
 import { ShoppingCart } from '@material-ui/icons';
 import { Badge } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
+import { actionTypes } from '../reducer';
+import { auth } from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +35,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket, user}, dispatch] = useStateValue();
+  const history = useHistory();
+
+  const SignOut = () => {
+    if(user){
+      auth.signOut();
+      dispatch({
+        type: actionTypes.EMPTY_BASKET,
+        basket: []
+      });
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: null
+      });
+      history.push('/');
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -50,12 +68,14 @@ export default function Navbar() {
           </Link>
           <div className={classes.grow}/>
           <Typography variant="h6" color="textPrimary" component="p">
-            Bienvenido
+            Bienvenido {user ? user.email  : ""}
           </Typography>
           <div className={classes.button}>
-            <Button variant="outlined">
-              <strong>Login</strong>
-            </Button>
+            <Link to='signin'>
+              <Button variant="outlined" onClick={SignOut}>
+                <strong>{user ? "Logout" : "Login"}</strong>
+              </Button>
+            </Link>
             <Link to="checkout">
               <IconButton aria-label="Items agregados al carrito" color="inherit">
                 <Badge badgeContent={basket?.length} color="secondary" >
