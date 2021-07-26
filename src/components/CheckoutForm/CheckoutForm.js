@@ -110,11 +110,11 @@ export default function CheckoutForm() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Gracias por su orden.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  Su número de pedido es # 2001539. Hemos enviado la confirmación de su pedido por correo electrónico y lo haremos
+                  enviarle una actualización cuando se haya enviado su pedido.
                 </Typography>
               </React.Fragment>
             ) : (
@@ -132,7 +132,7 @@ export default function CheckoutForm() {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Realizar pedido' : 'Siguiente'}
                   </Button>
                 </div>
               </React.Fragment>

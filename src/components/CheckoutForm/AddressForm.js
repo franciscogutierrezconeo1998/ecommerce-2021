@@ -17,7 +17,7 @@ export default function AddressForm() {
             required
             id="firstName"
             name="firstName"
-            label="First name"
+            label="Primer nombre"
             fullWidth
             autoComplete="given-name"
           />
@@ -27,7 +27,7 @@ export default function AddressForm() {
             required
             id="lastName"
             name="lastName"
-            label="Last name"
+            label="Apellido"
             fullWidth
             autoComplete="family-name"
           />
@@ -37,7 +37,7 @@ export default function AddressForm() {
             required
             id="address1"
             name="address1"
-            label="Address line 1"
+            label="Dirección linea 1"
             fullWidth
             autoComplete="shipping address-line1"
           />
@@ -46,7 +46,7 @@ export default function AddressForm() {
           <TextField
             id="address2"
             name="address2"
-            label="Address line 2"
+            label="Dirección linea 2"
             fullWidth
             autoComplete="shipping address-line2"
           />
@@ -56,7 +56,7 @@ export default function AddressForm() {
             required
             id="city"
             name="city"
-            label="City"
+            label="Ciudad"
             fullWidth
             autoComplete="shipping address-level2"
           />
@@ -69,7 +69,7 @@ export default function AddressForm() {
             required
             id="zip"
             name="zip"
-            label="Zip / Postal code"
+            label="Zip / Codigo postal"
             fullWidth
             autoComplete="shipping postal-code"
           />
@@ -79,7 +79,7 @@ export default function AddressForm() {
             required
             id="country"
             name="country"
-            label="Country"
+            label="Pais"
             fullWidth
             autoComplete="shipping country"
           />
@@ -87,7 +87,7 @@ export default function AddressForm() {
         <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
+            label="Use esta dirección para el detalle del pago"
           />
         </Grid>
       </Grid>
