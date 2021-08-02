@@ -1,0 +1,21 @@
+@media (max-width: 700px) {
+    .divLogo {
+        position: absolute;
+        left: 50%;
+        top: 10px;
+        transform: translate(-50%,0);
+    }
+
+    .divContMainNab {
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        padding-top: 4rem;
+    }
+}
+
+.divContMainNab {
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+}

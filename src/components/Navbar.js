@@ -12,11 +12,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 import { actionTypes } from '../reducer';
 import { auth } from '../firebase';
+import "../assets/css/Navbar.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginBottom: "7rem"
+    marginBottom: "7rem",
   },
   appBar: {
     backgroundColor: "whitesmoke",
@@ -31,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "10px",
     maxWidth: "130px",
   },
+  toolbar: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  }
 }));
 
 export default function Navbar() {
@@ -56,33 +63,37 @@ export default function Navbar() {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} >
-        <Toolbar>
-          <Link to="/">
-            <IconButton edge="start"  
-                        className={classes.menuButton} 
-                        color="inherit" 
-                        aria-label="menu">
-              <img src={imageLogoMain} 
-                  className={classes.image}/>
-            </IconButton>
-          </Link>
-          <div className={classes.grow}/>
-          <Typography variant="h6" color="textPrimary" component="p">
-            Bienvenido {user ? user.email  : ""}
-          </Typography>
-          <div className={classes.button}>
-            <Link to='signin'>
-              <Button variant="outlined" onClick={SignOut}>
-                <strong>{user ? "Logout" : "Login"}</strong>
-              </Button>
-            </Link>
-            <Link to="checkout">
-              <IconButton aria-label="Items agregados al carrito" color="inherit">
-                <Badge badgeContent={basket?.length} color="secondary" >
-                  <ShoppingCart fontSize="large" color="primary" />
-                </Badge>
+        <Toolbar className={classes.toolbar}>
+          <div className="divLogo">
+            <Link to="/">
+              <IconButton edge="start"  
+                          className={classes.menuButton} 
+                          color="inherit" 
+                          aria-label="menu">
+                <img src={imageLogoMain} 
+                    className={classes.image}/>
               </IconButton>
             </Link>
+          </div>
+          <div className={classes.grow}/>
+          <div className="divContMainNab">
+            <Typography variant="h6" color="textPrimary" component="p" style={{marginTop: "0.8rem"}}>
+              Bienvenido {user ? user.email  : ""}
+            </Typography>
+            <div className={classes.button}>
+              <Link to='signin'>
+                <Button variant="outlined" onClick={SignOut}>
+                  <strong>{user ? "Logout" : "Login"}</strong>
+                </Button>
+              </Link>
+              <Link to="checkout">
+                <IconButton aria-label="Items agregados al carrito" color="inherit">
+                  <Badge badgeContent={basket?.length} color="secondary" >
+                    <ShoppingCart fontSize="large" color="primary" />
+                  </Badge>
+                </IconButton>
+              </Link>
+            </div>
           </div>
 
         </Toolbar>
